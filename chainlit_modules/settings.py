@@ -31,13 +31,7 @@ except ImportError as e:
 
 # API Providers
 API_PROVIDERS = [
-    ("OPENROUTER", "OpenRouter"),
-    ("OPENAI", "OpenAI"),
     ("ANTHROPIC", "Anthropic"),
-    ("GEMINI", "Google Gemini"),
-    ("GROQ", "Groq"),
-    ("GROK", "xAI Grok"),
-    ("DEEPSEEK", "DeepSeek"),
 ]
 
 
@@ -155,7 +149,7 @@ async def show_models():
         all_models = get_all_models(include_builtin=True)
         model_names = [m["name"] for m in all_models if m.get("is_enabled", True)]
     except:
-        model_names = ["claude-sonnet-4", "gpt-4o", "deepseek-chat"]
+        model_names = ["Claude-Sonnet-4.5", "Claude-Sonnet-4", "Claude-3.5-Haiku"]
 
     current_model = cl.user_session.get("selected_model", model_names[0] if model_names else "")
 
@@ -224,9 +218,9 @@ def get_model_names() -> list:
         models = get_all_models(include_builtin=True)
         return [m["name"] for m in models if m.get("is_enabled", True)]
     except:
-        return ["claude-sonnet-4", "gpt-4o", "deepseek-chat"]
+        return ["Claude-Sonnet-4.5", "Claude-Sonnet-4", "Claude-3.5-Haiku"]
 
 
 def get_default_model() -> str:
     """Get current default model."""
-    return cl.user_session.get("selected_model", "claude-sonnet-4")
+    return cl.user_session.get("selected_model", "Claude-Sonnet-4.5")

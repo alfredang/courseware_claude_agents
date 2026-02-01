@@ -188,46 +188,10 @@ def _run_migrations(conn):
 
 BUILTIN_API_KEYS = [
     {
-        "key_name": "OPENROUTER_API_KEY",
-        "display_name": "OpenRouter",
-        "base_url": "https://openrouter.ai/api/v1",
-        "description": "Access 38+ models (OpenAI, Anthropic, Google, DeepSeek, Meta, Qwen, Mistral) through a single key"
-    },
-    {
-        "key_name": "OPENAI_API_KEY",
-        "display_name": "OpenAI",
-        "base_url": "https://api.openai.com/v1",
-        "description": "Direct access to OpenAI models (GPT-4, GPT-4o, o1, etc.)"
-    },
-    {
         "key_name": "ANTHROPIC_API_KEY",
         "display_name": "Anthropic",
         "base_url": "https://api.anthropic.com/v1",
         "description": "Direct access to Claude models"
-    },
-    {
-        "key_name": "GEMINI_API_KEY",
-        "display_name": "Gemini",
-        "base_url": "https://generativelanguage.googleapis.com/v1beta",
-        "description": "Direct access to Google Gemini models"
-    },
-    {
-        "key_name": "GROQ_API_KEY",
-        "display_name": "Groq",
-        "base_url": "https://api.groq.com/openai/v1",
-        "description": "Fast inference with Groq LPU"
-    },
-    {
-        "key_name": "GROK_API_KEY",
-        "display_name": "Grok",
-        "base_url": "https://api.x.ai/v1",
-        "description": "Direct access to xAI Grok models"
-    },
-    {
-        "key_name": "DEEPSEEK_API_KEY",
-        "display_name": "DeepSeek",
-        "base_url": "https://api.deepseek.com/v1",
-        "description": "Direct access to DeepSeek models"
     },
 ]
 
@@ -278,103 +242,14 @@ def refresh_builtin_api_keys():
 # ============ Built-in Models Seed Data ============
 
 BUILTIN_MODELS = [
-    # === OpenAI Models (via OpenRouter) ===
-    {"name": "GPT-5.2", "model_id": "openai/gpt-5.2", "api_provider": "OPENROUTER", "sort_order": 1},
-    {"name": "GPT-5", "model_id": "openai/gpt-5", "api_provider": "OPENROUTER", "sort_order": 2},
-    {"name": "GPT-5-Mini", "model_id": "openai/gpt-5-mini", "api_provider": "OPENROUTER", "sort_order": 3},
-    {"name": "GPT-4.1", "model_id": "openai/gpt-4.1", "api_provider": "OPENROUTER", "sort_order": 3},
-    {"name": "GPT-4.1-Mini", "model_id": "openai/gpt-4.1-mini", "api_provider": "OPENROUTER", "sort_order": 4},
-    {"name": "GPT-4.1-Nano", "model_id": "openai/gpt-4.1-nano", "api_provider": "OPENROUTER", "sort_order": 5},
-    {"name": "GPT-4o", "model_id": "openai/gpt-4o", "api_provider": "OPENROUTER", "sort_order": 6},
-    {"name": "GPT-4o-Mini", "model_id": "openai/gpt-4o-mini", "api_provider": "OPENROUTER", "sort_order": 7},
-    {"name": "o3", "model_id": "openai/o3", "api_provider": "OPENROUTER", "sort_order": 8},
-    {"name": "o3-Mini", "model_id": "openai/o3-mini", "api_provider": "OPENROUTER", "sort_order": 9},
-    {"name": "o3-Pro", "model_id": "openai/o3-pro", "api_provider": "OPENROUTER", "sort_order": 10},
-    {"name": "o4-Mini", "model_id": "openai/o4-mini", "api_provider": "OPENROUTER", "sort_order": 11},
-    {"name": "o1", "model_id": "openai/o1", "api_provider": "OPENROUTER", "sort_order": 12},
-
-    # === OpenAI Models (Native API) ===
-    {"name": "OpenAI GPT-5.2", "model_id": "gpt-5.2", "api_provider": "OPENAI", "base_url": "https://api.openai.com/v1", "sort_order": 98},
-    {"name": "OpenAI GPT-5", "model_id": "gpt-5", "api_provider": "OPENAI", "base_url": "https://api.openai.com/v1", "sort_order": 99},
-    {"name": "OpenAI GPT-4.1", "model_id": "gpt-4.1", "api_provider": "OPENAI", "base_url": "https://api.openai.com/v1", "sort_order": 100},
-    {"name": "OpenAI GPT-4.1-Mini", "model_id": "gpt-4.1-mini", "api_provider": "OPENAI", "base_url": "https://api.openai.com/v1", "sort_order": 101},
-    {"name": "OpenAI GPT-4.1-Nano", "model_id": "gpt-4.1-nano", "api_provider": "OPENAI", "base_url": "https://api.openai.com/v1", "sort_order": 102},
-    {"name": "OpenAI GPT-4o", "model_id": "gpt-4o", "api_provider": "OPENAI", "base_url": "https://api.openai.com/v1", "sort_order": 103},
-    {"name": "OpenAI GPT-4o-Mini", "model_id": "gpt-4o-mini", "api_provider": "OPENAI", "base_url": "https://api.openai.com/v1", "sort_order": 104},
-    {"name": "OpenAI o3", "model_id": "o3", "api_provider": "OPENAI", "base_url": "https://api.openai.com/v1", "sort_order": 105},
-    {"name": "OpenAI o3-Mini", "model_id": "o3-mini", "api_provider": "OPENAI", "base_url": "https://api.openai.com/v1", "sort_order": 106},
-    {"name": "OpenAI o1", "model_id": "o1", "api_provider": "OPENAI", "base_url": "https://api.openai.com/v1", "sort_order": 107},
-    {"name": "OpenAI o1-Mini", "model_id": "o1-mini", "api_provider": "OPENAI", "base_url": "https://api.openai.com/v1", "sort_order": 108},
-
-    # === Anthropic Claude Models (via OpenRouter) ===
-    {"name": "Claude-Opus-4.5", "model_id": "anthropic/claude-opus-4.5", "api_provider": "OPENROUTER", "sort_order": 20},
-    {"name": "Claude-Sonnet-4.5", "model_id": "anthropic/claude-sonnet-4.5", "api_provider": "OPENROUTER", "sort_order": 21},
-    {"name": "Claude-Opus-4", "model_id": "anthropic/claude-opus-4", "api_provider": "OPENROUTER", "sort_order": 22},
-    {"name": "Claude-Sonnet-4", "model_id": "anthropic/claude-sonnet-4", "api_provider": "OPENROUTER", "sort_order": 23},
-    {"name": "Claude-Haiku-4.5", "model_id": "anthropic/claude-haiku-4.5", "api_provider": "OPENROUTER", "sort_order": 24},
-    {"name": "Claude-3.5-Sonnet", "model_id": "anthropic/claude-3.5-sonnet", "api_provider": "OPENROUTER", "sort_order": 25},
-
     # === Anthropic Claude Models (Native API) - Sonnet 4.5 is default (sort_order 0) ===
-    {"name": "Anthropic Claude-Sonnet-4.5", "model_id": "claude-sonnet-4-5-20251101", "api_provider": "ANTHROPIC", "base_url": "https://api.anthropic.com/v1", "sort_order": 0},
-    {"name": "Anthropic Claude-Opus-4.5", "model_id": "claude-opus-4-5-20251101", "api_provider": "ANTHROPIC", "base_url": "https://api.anthropic.com/v1", "sort_order": 1},
-    {"name": "Anthropic Claude-Sonnet-4", "model_id": "claude-sonnet-4-20250514", "api_provider": "ANTHROPIC", "base_url": "https://api.anthropic.com/v1", "sort_order": 2},
-    {"name": "Anthropic Claude-Opus-4", "model_id": "claude-opus-4-20250514", "api_provider": "ANTHROPIC", "base_url": "https://api.anthropic.com/v1", "sort_order": 3},
-    {"name": "Anthropic Claude-3.5-Sonnet", "model_id": "claude-3-5-sonnet-20241022", "api_provider": "ANTHROPIC", "base_url": "https://api.anthropic.com/v1", "sort_order": 4},
-    {"name": "Anthropic Claude-3.5-Haiku", "model_id": "claude-3-5-haiku-20241022", "api_provider": "ANTHROPIC", "base_url": "https://api.anthropic.com/v1", "sort_order": 5},
-    {"name": "Anthropic Claude-3-Opus", "model_id": "claude-3-opus-20240229", "api_provider": "ANTHROPIC", "base_url": "https://api.anthropic.com/v1", "sort_order": 6},
-
-    # === Google Gemini Models (via OpenRouter) ===
-    {"name": "Gemini-3-Pro", "model_id": "google/gemini-3-pro-preview", "api_provider": "OPENROUTER", "sort_order": 30},
-    {"name": "Gemini-2.5-Pro", "model_id": "google/gemini-2.5-pro", "api_provider": "OPENROUTER", "sort_order": 31},
-    {"name": "Gemini-2.5-Flash", "model_id": "google/gemini-2.5-flash", "api_provider": "OPENROUTER", "sort_order": 32},
-    {"name": "Gemini-2.5-Flash-Lite", "model_id": "google/gemini-2.5-flash-lite", "api_provider": "OPENROUTER", "sort_order": 33},
-    {"name": "Gemini-2.0-Flash", "model_id": "google/gemini-2.0-flash-exp", "api_provider": "OPENROUTER", "sort_order": 34},
-    {"name": "Gemini-Pro-1.5", "model_id": "google/gemini-pro-1.5", "api_provider": "OPENROUTER", "sort_order": 35},
-
-    # === Google Gemini Models (Native API) ===
-    {"name": "Gemini 2.0-Flash", "model_id": "gemini-2.0-flash", "api_provider": "GEMINI", "base_url": "https://generativelanguage.googleapis.com/v1beta", "sort_order": 130},
-    {"name": "Gemini 2.0-Flash-Lite", "model_id": "gemini-2.0-flash-lite", "api_provider": "GEMINI", "base_url": "https://generativelanguage.googleapis.com/v1beta", "sort_order": 131},
-    {"name": "Gemini 1.5-Pro", "model_id": "gemini-1.5-pro", "api_provider": "GEMINI", "base_url": "https://generativelanguage.googleapis.com/v1beta", "sort_order": 132},
-    {"name": "Gemini 1.5-Flash", "model_id": "gemini-1.5-flash", "api_provider": "GEMINI", "base_url": "https://generativelanguage.googleapis.com/v1beta", "sort_order": 133},
-    {"name": "Gemini 1.5-Flash-8B", "model_id": "gemini-1.5-flash-8b", "api_provider": "GEMINI", "base_url": "https://generativelanguage.googleapis.com/v1beta", "sort_order": 134},
-
-    # === DeepSeek Models (via OpenRouter) ===
-    {"name": "DeepSeek-V3", "model_id": "deepseek/deepseek-chat", "api_provider": "OPENROUTER", "sort_order": 40},
-    {"name": "DeepSeek-R1", "model_id": "deepseek/deepseek-r1", "api_provider": "OPENROUTER", "sort_order": 41},
-    {"name": "DeepSeek-R1-Distill-Qwen-32B", "model_id": "deepseek/deepseek-r1-distill-qwen-32b", "api_provider": "OPENROUTER", "sort_order": 42},
-
-    # === DeepSeek Models (Native API) ===
-    {"name": "DeepSeek Chat", "model_id": "deepseek-chat", "api_provider": "DEEPSEEK", "base_url": "https://api.deepseek.com/v1", "sort_order": 140},
-    {"name": "DeepSeek Reasoner", "model_id": "deepseek-reasoner", "api_provider": "DEEPSEEK", "base_url": "https://api.deepseek.com/v1", "sort_order": 141},
-
-    # === Groq Models (Native API) ===
-    {"name": "Groq Llama-3.3-70B", "model_id": "llama-3.3-70b-versatile", "api_provider": "GROQ", "base_url": "https://api.groq.com/openai/v1", "sort_order": 150},
-    {"name": "Groq Llama-3.1-8B", "model_id": "llama-3.1-8b-instant", "api_provider": "GROQ", "base_url": "https://api.groq.com/openai/v1", "sort_order": 151},
-    {"name": "Groq Mixtral-8x7B", "model_id": "mixtral-8x7b-32768", "api_provider": "GROQ", "base_url": "https://api.groq.com/openai/v1", "sort_order": 152},
-    {"name": "Groq Gemma2-9B", "model_id": "gemma2-9b-it", "api_provider": "GROQ", "base_url": "https://api.groq.com/openai/v1", "sort_order": 153},
-
-    # === xAI Grok Models (Native API) ===
-    {"name": "Grok 3", "model_id": "grok-3", "api_provider": "GROK", "base_url": "https://api.x.ai/v1", "sort_order": 160},
-    {"name": "Grok 3-Mini", "model_id": "grok-3-mini", "api_provider": "GROK", "base_url": "https://api.x.ai/v1", "sort_order": 161},
-    {"name": "Grok 2", "model_id": "grok-2-1212", "api_provider": "GROK", "base_url": "https://api.x.ai/v1", "sort_order": 162},
-    {"name": "Grok Vision", "model_id": "grok-2-vision-1212", "api_provider": "GROK", "base_url": "https://api.x.ai/v1", "sort_order": 163},
-
-    # === Qwen Models ===
-    {"name": "QwQ-32B", "model_id": "qwen/qwq-32b", "api_provider": "OPENROUTER", "sort_order": 50},
-    {"name": "Qwen-2.5-72B-Instruct", "model_id": "qwen/qwen-2.5-72b-instruct", "api_provider": "OPENROUTER", "sort_order": 51},
-    {"name": "Qwen-2.5-32B-Instruct", "model_id": "qwen/qwen-2.5-32b-instruct", "api_provider": "OPENROUTER", "sort_order": 52},
-    {"name": "Qwen-2.5-Coder-32B", "model_id": "qwen/qwen-2.5-coder-32b-instruct", "api_provider": "OPENROUTER", "sort_order": 53},
-    {"name": "Qwen3-VL-32B", "model_id": "qwen/qwen3-vl-32b", "api_provider": "OPENROUTER", "sort_order": 54},
-
-    # === Meta Llama Models ===
-    {"name": "Llama-3.3-70B", "model_id": "meta-llama/llama-3.3-70b-instruct", "api_provider": "OPENROUTER", "sort_order": 60},
-    {"name": "Llama-3.1-405B", "model_id": "meta-llama/llama-3.1-405b-instruct", "api_provider": "OPENROUTER", "sort_order": 61},
-    {"name": "Llama-3.1-70B", "model_id": "meta-llama/llama-3.1-70b-instruct", "api_provider": "OPENROUTER", "sort_order": 62},
-
-    # === Mistral Models ===
-    {"name": "Mistral-Large", "model_id": "mistralai/mistral-large", "api_provider": "OPENROUTER", "sort_order": 70},
-    {"name": "Mixtral-8x22B", "model_id": "mistralai/mixtral-8x22b-instruct", "api_provider": "OPENROUTER", "sort_order": 71},
-    {"name": "Codestral", "model_id": "mistralai/codestral", "api_provider": "OPENROUTER", "sort_order": 72},
+    {"name": "Claude-Sonnet-4.5", "model_id": "claude-sonnet-4-5-20251101", "api_provider": "ANTHROPIC", "base_url": "https://api.anthropic.com/v1", "sort_order": 0},
+    {"name": "Claude-Opus-4.5", "model_id": "claude-opus-4-5-20251101", "api_provider": "ANTHROPIC", "base_url": "https://api.anthropic.com/v1", "sort_order": 1},
+    {"name": "Claude-Sonnet-4", "model_id": "claude-sonnet-4-20250514", "api_provider": "ANTHROPIC", "base_url": "https://api.anthropic.com/v1", "sort_order": 2},
+    {"name": "Claude-Opus-4", "model_id": "claude-opus-4-20250514", "api_provider": "ANTHROPIC", "base_url": "https://api.anthropic.com/v1", "sort_order": 3},
+    {"name": "Claude-3.5-Sonnet", "model_id": "claude-3-5-sonnet-20241022", "api_provider": "ANTHROPIC", "base_url": "https://api.anthropic.com/v1", "sort_order": 4},
+    {"name": "Claude-3.5-Haiku", "model_id": "claude-3-5-haiku-20241022", "api_provider": "ANTHROPIC", "base_url": "https://api.anthropic.com/v1", "sort_order": 5},
+    {"name": "Claude-3-Opus", "model_id": "claude-3-opus-20240229", "api_provider": "ANTHROPIC", "base_url": "https://api.anthropic.com/v1", "sort_order": 6},
 ]
 
 

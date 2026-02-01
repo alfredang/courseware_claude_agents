@@ -1,10 +1,10 @@
 """
 Entity Extraction Processor
 
-This module handles entity extraction from documents and images using OpenRouter API.
-Uses vision-capable models (GPT-4o, Gemini) for image processing.
+This module handles entity extraction from documents and images using Claude API.
+Uses Claude's vision capabilities for image processing.
 
-Updated: 26 January 2026
+Updated: February 2026
 """
 
 import os
@@ -13,35 +13,26 @@ import base64
 from typing import Dict, Any, Union
 from PIL import Image
 import io
-from settings.api_manager import load_api_keys
 
-# OpenAI client for OpenRouter
-from openai import OpenAI
+from anthropic import Anthropic
 
 # Default model for entity extraction (vision-capable)
-DEFAULT_MODEL = "openai/gpt-4o-mini"
+DEFAULT_MODEL = "claude-3-5-haiku-20241022"
 
 
-def _get_openrouter_client() -> OpenAI:
-    """Get OpenAI client configured for OpenRouter"""
-    api_keys = load_api_keys()
-    api_key = api_keys.get("OPENROUTER_API_KEY", "")
-
-    if not api_key:
-        api_key = api_keys.get("OPENAI_API_KEY", "")
+def _get_anthropic_client() -> Anthropic:
+    """Get Anthropic client"""
+    api_key = os.environ.get("ANTHROPIC_API_KEY", "")
 
     if not api_key:
-        raise ValueError("No API key configured. Please set OPENROUTER_API_KEY in Settings.")
+        raise ValueError("No API key configured. Please set ANTHROPIC_API_KEY environment variable.")
 
-    return OpenAI(
-        api_key=api_key,
-        base_url="https://openrouter.ai/api/v1"
-    )
+    return Anthropic(api_key=api_key)
 
 
 def extract_entities(document_content: Union[str, bytes], custom_instructions: str, is_image: bool = False) -> Dict[str, Any]:
     """
-    Extract named entities from text or images using OpenRouter API.
+    Extract named entities from text or images using Claude API.
     If `is_image` is True, process the content as an image.
 
     Args:
@@ -53,7 +44,7 @@ def extract_entities(document_content: Union[str, bytes], custom_instructions: s
         Dictionary with extracted entities
     """
     try:
-        client = _get_openrouter_client()
+        client = _get_anthropic_client()
     except ValueError as e:
         return {"error": str(e), "entities": []}
 
@@ -87,25 +78,26 @@ Exclude any mentions of Tertiary Infotech as the company."""
             # Convert bytes to base64 for API
             base64_image = base64.b64encode(document_content).decode('utf-8')
 
-            # Use vision model for image processing
-            response = client.chat.completions.create(
+            # Use Claude vision for image processing
+            response = client.messages.create(
                 model=DEFAULT_MODEL,
+                max_tokens=4096,
                 messages=[
                     {
                         "role": "user",
                         "content": [
                             {"type": "text", "text": system_prompt},
                             {
-                                "type": "image_url",
-                                "image_url": {
-                                    "url": f"data:image/png;base64,{base64_image}"
+                                "type": "image",
+                                "source": {
+                                    "type": "base64",
+                                    "media_type": "image/png",
+                                    "data": base64_image
                                 }
                             }
                         ]
                     }
-                ],
-                temperature=0.2,
-                response_format={"type": "json_object"}
+                ]
             )
         elif isinstance(document_content, Image.Image):
             # Handle PIL Image objects
@@ -113,39 +105,39 @@ Exclude any mentions of Tertiary Infotech as the company."""
             document_content.save(buffer, format='PNG')
             base64_image = base64.b64encode(buffer.getvalue()).decode('utf-8')
 
-            response = client.chat.completions.create(
+            response = client.messages.create(
                 model=DEFAULT_MODEL,
+                max_tokens=4096,
                 messages=[
                     {
                         "role": "user",
                         "content": [
                             {"type": "text", "text": system_prompt},
                             {
-                                "type": "image_url",
-                                "image_url": {
-                                    "url": f"data:image/png;base64,{base64_image}"
+                                "type": "image",
+                                "source": {
+                                    "type": "base64",
+                                    "media_type": "image/png",
+                                    "data": base64_image
                                 }
                             }
                         ]
                     }
-                ],
-                temperature=0.2,
-                response_format={"type": "json_object"}
+                ]
             )
         else:
             # Handle text content
-            response = client.chat.completions.create(
+            response = client.messages.create(
                 model=DEFAULT_MODEL,
+                max_tokens=4096,
+                system=system_prompt,
                 messages=[
-                    {"role": "system", "content": system_prompt},
                     {"role": "user", "content": str(document_content)}
-                ],
-                temperature=0.2,
-                response_format={"type": "json_object"}
+                ]
             )
 
         # Parse response
-        response_text = response.choices[0].message.content.strip()
+        response_text = response.content[0].text.strip()
 
         # Clean up markdown if present
         if response_text.startswith("```json"):

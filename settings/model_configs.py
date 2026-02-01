@@ -106,11 +106,6 @@ MODEL_CHOICES = {
     "Claude-Opus-4.5": claude_opus_config,
     "Claude-Haiku-3.5": claude_haiku_config,
     "Claude-Sonnet-3.5": claude_sonnet_35_config,
-    # Legacy aliases for backward compatibility
-    "DeepSeek-Chat": claude_sonnet_4_config,
-    "GPT-4o-Mini": claude_haiku_config,
-    "Gemini-Flash": claude_haiku_config,
-    "Gemini-Pro": claude_sonnet_4_config,
 }
 
 # =============================================================================

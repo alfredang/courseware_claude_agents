@@ -71,7 +71,6 @@ response = client.messages.create(
 ANTHROPIC_API_KEY=sk-ant-...     # Required - Claude API
 DATABASE_URL=postgresql://...     # Required - Neon PostgreSQL
 CHAINLIT_AUTH_SECRET=...          # Required - Session encryption
-GEMINI_API_KEY=...                # Optional - For slides/NotebookLM
 ```
 
 ## Skills System

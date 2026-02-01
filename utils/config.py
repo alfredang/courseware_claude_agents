@@ -89,24 +89,9 @@ def get_secret_section(section: str) -> Optional[Dict[str, Any]]:
 
 
 # Convenience functions for common secrets
-def get_openai_api_key() -> str:
-    """Get OpenAI API key."""
-    return get_secret("OPENAI_API_KEY")
-
-
-def get_openrouter_api_key() -> str:
-    """Get OpenRouter API key."""
-    return get_secret("OPENROUTER_API_KEY")
-
-
 def get_anthropic_api_key() -> str:
     """Get Anthropic API key."""
     return get_secret("ANTHROPIC_API_KEY")
-
-
-def get_gemini_api_key() -> str:
-    """Get Gemini API key."""
-    return get_secret("GEMINI_API_KEY")
 
 
 def get_database_url() -> str:
