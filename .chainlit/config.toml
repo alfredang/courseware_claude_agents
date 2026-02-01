@@ -19,7 +19,7 @@ show_readme_as_default = false
 default_collapse_content = true
 
 # Default theme
-default_theme = "light"
+default_theme = "dark"
 
 # Allow dark mode toggle
 allow_dark_mode = true

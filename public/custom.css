@@ -5,17 +5,20 @@
  * Date: February 2026
  */
 
-/* ===== Color Variables ===== */
+/* ===== Color Variables (Dark Theme) ===== */
 :root {
-    --primary-color: #2E86AB;
-    --secondary-color: #A23B72;
-    --success-color: #28a745;
-    --warning-color: #ffc107;
-    --error-color: #dc3545;
-    --background-color: #f8f9fa;
-    --text-color: #212529;
-    --border-color: #dee2e6;
-    --card-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    --primary-color: #4FC3F7;
+    --secondary-color: #CE93D8;
+    --success-color: #81C784;
+    --warning-color: #FFD54F;
+    --error-color: #E57373;
+    --background-color: #121212;
+    --surface-color: #1E1E1E;
+    --text-color: #E0E0E0;
+    --text-secondary: #9E9E9E;
+    --border-color: #333333;
+    --card-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+    --hover-color: #2A2A2A;
 }
 
 /* ===== Chat Profile Styling ===== */
@@ -306,5 +309,313 @@
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #a1a1a1;
+    background: #666;
+}
+
+/* ===== Dark Theme Global Styles ===== */
+body {
+    background-color: var(--background-color) !important;
+    color: var(--text-color) !important;
+}
+
+/* Main container dark styling */
+.MuiPaper-root,
+.MuiDrawer-paper {
+    background-color: var(--surface-color) !important;
+    color: var(--text-color) !important;
+}
+
+/* ===== Left Sidebar / Profile Navigation ===== */
+/* Make the chat profile dropdown more prominent */
+[class*="chatProfile"] {
+    background-color: var(--surface-color) !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: 8px !important;
+}
+
+/* Profile list items */
+[class*="chatProfile"] li,
+[class*="profile-item"] {
+    padding: 12px 16px !important;
+    border-bottom: 1px solid var(--border-color) !important;
+    transition: background-color 0.2s ease !important;
+}
+
+[class*="chatProfile"] li:hover,
+[class*="profile-item"]:hover {
+    background-color: var(--hover-color) !important;
+}
+
+/* Selected profile highlight */
+[class*="chatProfile"] li[aria-selected="true"],
+[class*="chatProfile"] li.selected {
+    background-color: rgba(79, 195, 247, 0.15) !important;
+    border-left: 3px solid var(--primary-color) !important;
+}
+
+/* ===== Header Dark Styling ===== */
+header,
+[class*="header"],
+.MuiAppBar-root {
+    background-color: var(--surface-color) !important;
+    border-bottom: 1px solid var(--border-color) !important;
+}
+
+/* ===== Chat Area Dark Styling ===== */
+[class*="chat"],
+[class*="message-container"] {
+    background-color: var(--background-color) !important;
+}
+
+/* Message bubbles */
+[class*="message"] {
+    background-color: var(--surface-color) !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: 12px !important;
+}
+
+/* User messages */
+[class*="user-message"],
+[class*="userMessage"] {
+    background-color: rgba(79, 195, 247, 0.1) !important;
+    border-color: var(--primary-color) !important;
+}
+
+/* ===== Input Area Dark Styling ===== */
+[class*="input"],
+[class*="composer"],
+textarea,
+input[type="text"] {
+    background-color: var(--surface-color) !important;
+    color: var(--text-color) !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: 8px !important;
+}
+
+[class*="input"]:focus,
+textarea:focus,
+input[type="text"]:focus {
+    border-color: var(--primary-color) !important;
+    box-shadow: 0 0 0 2px rgba(79, 195, 247, 0.2) !important;
+}
+
+/* ===== Buttons Dark Styling ===== */
+button,
+[class*="button"],
+.MuiButton-root {
+    background-color: var(--primary-color) !important;
+    color: #121212 !important;
+    border: none !important;
+    border-radius: 8px !important;
+    font-weight: 500 !important;
+    transition: all 0.2s ease !important;
+}
+
+button:hover,
+[class*="button"]:hover,
+.MuiButton-root:hover {
+    background-color: #29B6F6 !important;
+    transform: translateY(-1px) !important;
+}
+
+/* Secondary/outline buttons */
+button[class*="outlined"],
+[class*="secondary"] {
+    background-color: transparent !important;
+    color: var(--primary-color) !important;
+    border: 1px solid var(--primary-color) !important;
+}
+
+/* ===== Action Cards / Starters ===== */
+[class*="starter"],
+[class*="action-card"] {
+    background-color: var(--surface-color) !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: 12px !important;
+    transition: all 0.2s ease !important;
+}
+
+[class*="starter"]:hover,
+[class*="action-card"]:hover {
+    background-color: var(--hover-color) !important;
+    border-color: var(--primary-color) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: var(--card-shadow) !important;
+}
+
+/* ===== Dropdown / Select Dark Styling ===== */
+select,
+[class*="select"],
+.MuiSelect-root {
+    background-color: var(--surface-color) !important;
+    color: var(--text-color) !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: 8px !important;
+}
+
+/* Dropdown menu */
+[class*="menu"],
+[class*="dropdown"],
+.MuiMenu-paper,
+.MuiPopover-paper {
+    background-color: var(--surface-color) !important;
+    border: 1px solid var(--border-color) !important;
+    box-shadow: var(--card-shadow) !important;
+}
+
+[class*="menu"] li,
+[class*="dropdown"] li,
+.MuiMenuItem-root {
+    color: var(--text-color) !important;
+}
+
+[class*="menu"] li:hover,
+[class*="dropdown"] li:hover,
+.MuiMenuItem-root:hover {
+    background-color: var(--hover-color) !important;
+}
+
+/* ===== Code Blocks Dark Styling ===== */
+pre,
+code {
+    background-color: #0D0D0D !important;
+    color: #E0E0E0 !important;
+    border: 1px solid var(--border-color) !important;
+}
+
+.message-content code {
+    background-color: #2A2A2A !important;
+    color: var(--primary-color) !important;
+    padding: 2px 6px !important;
+    border-radius: 4px !important;
+}
+
+/* ===== Tables Dark Styling ===== */
+.message-content table {
+    border-color: var(--border-color) !important;
+}
+
+.message-content th {
+    background-color: var(--surface-color) !important;
+    color: var(--text-color) !important;
+    border-color: var(--border-color) !important;
+}
+
+.message-content td {
+    background-color: var(--background-color) !important;
+    color: var(--text-color) !important;
+    border-color: var(--border-color) !important;
+}
+
+.message-content tr:hover td {
+    background-color: var(--hover-color) !important;
+}
+
+/* ===== Links ===== */
+a {
+    color: var(--primary-color) !important;
+}
+
+a:hover {
+    color: #29B6F6 !important;
+}
+
+/* ===== Scrollbar Dark Styling ===== */
+::-webkit-scrollbar-track {
+    background: var(--background-color) !important;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #444 !important;
+    border-radius: 4px !important;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555 !important;
+}
+
+/* ===== File Upload Dark Styling ===== */
+.file-upload-area {
+    background-color: var(--surface-color) !important;
+    border-color: var(--border-color) !important;
+}
+
+.file-upload-area:hover {
+    border-color: var(--primary-color) !important;
+    background-color: var(--hover-color) !important;
+}
+
+.file-element {
+    background-color: var(--hover-color) !important;
+    color: var(--text-color) !important;
+}
+
+/* ===== Step Indicators Dark ===== */
+.step-container {
+    background-color: var(--surface-color) !important;
+    border-left-color: var(--primary-color) !important;
+}
+
+/* ===== Info Cards Dark ===== */
+.info-card {
+    background-color: var(--surface-color) !important;
+    border-color: var(--border-color) !important;
+}
+
+/* ===== Status Badges Dark ===== */
+.status-badge.success {
+    background-color: rgba(129, 199, 132, 0.15) !important;
+    color: var(--success-color) !important;
+}
+
+.status-badge.warning {
+    background-color: rgba(255, 213, 79, 0.15) !important;
+    color: var(--warning-color) !important;
+}
+
+.status-badge.error {
+    background-color: rgba(229, 115, 115, 0.15) !important;
+    color: var(--error-color) !important;
+}
+
+.status-badge.info {
+    background-color: rgba(79, 195, 247, 0.15) !important;
+    color: var(--primary-color) !important;
+}
+
+/* ===== Modal / Dialog Dark ===== */
+[class*="modal"],
+[class*="dialog"],
+.MuiDialog-paper {
+    background-color: var(--surface-color) !important;
+    color: var(--text-color) !important;
+    border: 1px solid var(--border-color) !important;
+}
+
+/* ===== Tooltips Dark ===== */
+[class*="tooltip"],
+.MuiTooltip-tooltip {
+    background-color: #333 !important;
+    color: var(--text-color) !important;
+    border: 1px solid var(--border-color) !important;
+}
+
+/* ===== Icons ===== */
+svg,
+[class*="icon"] {
+    color: var(--text-color) !important;
+}
+
+/* ===== Remove Light Mode Overrides ===== */
+@media (prefers-color-scheme: dark) {
+    /* Already dark, no changes needed */
+}
+
+@media (prefers-color-scheme: light) {
+    /* Force dark theme even in light mode preference */
+    :root {
+        --background-color: #121212;
+        --surface-color: #1E1E1E;
+        --text-color: #E0E0E0;
+    }
 }

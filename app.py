@@ -24,7 +24,6 @@ from settings.api_manager import load_api_keys, save_api_keys, get_all_available
 from settings.api_database import (
     get_all_models,
     get_task_model_assignment,
-    verify_admin_password,
 )
 from company.company_manager import get_selected_company, get_organizations
 from skills import match_skill_by_keywords, get_skill_action, get_workflow_steps
@@ -40,27 +39,6 @@ from chainlit_modules import (
     check_documents,
     settings,
 )
-
-
-# =============================================================================
-# Authentication
-# =============================================================================
-
-@cl.password_auth_callback
-def auth_callback(username: str, password: str):
-    """
-    Authenticate users against the admin credentials database.
-    Returns a User object if authentication succeeds.
-    """
-    try:
-        if verify_admin_password(username, password):
-            return cl.User(
-                identifier=username,
-                metadata={"role": "admin", "provider": "credentials"}
-            )
-    except Exception as e:
-        print(f"Auth error: {e}")
-    return None
 
 
 # =============================================================================
