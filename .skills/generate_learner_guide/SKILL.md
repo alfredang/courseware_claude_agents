@@ -12,6 +12,9 @@ learner guide, student guide, lg document, create lg, generate lg, learning mate
 ## Description
 Help users generate Learner Guide (LG) documents for WSQ courses.
 
+## Execution
+This skill runs using **Claude Code with subscription plan**. Do NOT use pay-as-you-go API keys. All AI operations should be executed through the Claude Code CLI environment with an active subscription.
+
 ## Response
 I'll take you to **Generate Courseware** now.
 

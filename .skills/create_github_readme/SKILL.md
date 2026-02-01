@@ -17,6 +17,9 @@ readme, github readme, create readme, generate readme, project readme, documenta
 ## Description
 Generate a professional GitHub README.md file for the WSQ Courseware Generator project following open standards and best practices.
 
+## Execution
+This skill runs using **Claude Code with subscription plan**. Do NOT use pay-as-you-go API keys. All AI operations should be executed through the Claude Code CLI environment with an active subscription.
+
 ## Response
 I'll generate a comprehensive GitHub README.md for the project.
 

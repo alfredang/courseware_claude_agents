@@ -12,6 +12,9 @@ course proposal, create cp, generate cp, make cp, new course, cp document, tsc, 
 ## Description
 Help users create Course Proposals (CP) for WSQ courses.
 
+## Execution
+This skill runs using **Claude Code with subscription plan**. Do NOT use pay-as-you-go API keys. All AI operations should be executed through the Claude Code CLI environment with an active subscription.
+
 ## Response
 I'll take you to **Generate Course Proposal** now.
 

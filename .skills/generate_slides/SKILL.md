@@ -12,6 +12,9 @@ slides, presentation, powerpoint, ppt, create slides, generate slides, make slid
 ## Description
 Help users create PowerPoint presentation slides from course materials using NotebookLM MCP.
 
+## Execution
+This skill runs using **Claude Code with subscription plan**. Do NOT use pay-as-you-go API keys. All AI operations should be executed through the Claude Code CLI environment with an active subscription.
+
 ## Response
 I'll take you to **Generate Slides** now.
 

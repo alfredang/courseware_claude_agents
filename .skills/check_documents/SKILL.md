@@ -12,6 +12,9 @@ check document, validate document, verify document, check files, validate files,
 ## Description
 Help users validate and check supporting documents for WSQ course submissions.
 
+## Execution
+This skill runs using **Claude Code with subscription plan**. Do NOT use pay-as-you-go API keys. All AI operations should be executed through the Claude Code CLI environment with an active subscription.
+
 ## Response
 I'll take you to **Check Documents** now.
 

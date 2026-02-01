@@ -12,6 +12,9 @@ assessment, generate assessment, create assessment, quiz, test, exam, saq, short
 ## Description
 Help users create assessment materials for WSQ courses.
 
+## Execution
+This skill runs using **Claude Code with subscription plan**. Do NOT use pay-as-you-go API keys. All AI operations should be executed through the Claude Code CLI environment with an active subscription.
+
 ## Response
 I'll take you to **Generate Assessment** now.
 

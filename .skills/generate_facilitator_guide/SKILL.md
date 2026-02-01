@@ -12,6 +12,9 @@ facilitator guide, trainer guide, fg document, create fg, generate fg, teaching 
 ## Description
 Help users generate Facilitator Guide (FG) documents for WSQ courses.
 
+## Execution
+This skill runs using **Claude Code with subscription plan**. Do NOT use pay-as-you-go API keys. All AI operations should be executed through the Claude Code CLI environment with an active subscription.
+
 ## Response
 I'll take you to **Generate Courseware** now.
 

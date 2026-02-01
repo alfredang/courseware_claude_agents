@@ -12,6 +12,9 @@ add assessment to ap, attach assessment, annex assessment, assessment to ap, app
 ## Description
 Help users attach generated assessment materials to their Assessment Plan (AP) document.
 
+## Execution
+This skill runs using **Claude Code with subscription plan**. Do NOT use pay-as-you-go API keys. All AI operations should be executed through the Claude Code CLI environment with an active subscription.
+
 ## Response
 I'll take you to **Add Assessment to AP** now.
 

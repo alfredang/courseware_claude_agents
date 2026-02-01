@@ -6,6 +6,9 @@ description: WSQ Courseware Assistant UI Branding Guidelines
 
 This skill defines the visual branding and styling standards for the WSQ Courseware Assistant application. Follow these guidelines when creating or modifying UI elements.
 
+## Execution
+This skill runs using **Claude Code with subscription plan**. Do NOT use pay-as-you-go API keys. All AI operations should be executed through the Claude Code CLI environment with an active subscription.
+
 ---
 
 ## 🎨 Color Palette

@@ -12,6 +12,9 @@ assessment plan, ap document, create ap, generate ap, grading rubric, assessment
 ## Description
 Help users generate Assessment Plan (AP) documents for WSQ courses.
 
+## Execution
+This skill runs using **Claude Code with subscription plan**. Do NOT use pay-as-you-go API keys. All AI operations should be executed through the Claude Code CLI environment with an active subscription.
+
 ## Response
 I'll take you to **Generate Courseware** now.
 

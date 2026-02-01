@@ -12,6 +12,9 @@ courseware, generate courseware, create courseware, courseware documents, suppor
 ## Description
 Help users generate all courseware supporting documents (AP, FG, LG, LP) for WSQ courses.
 
+## Execution
+This skill runs using **Claude Code with subscription plan**. Do NOT use pay-as-you-go API keys. All AI operations should be executed through the Claude Code CLI environment with an active subscription.
+
 ## Response
 I'll take you to **Generate Courseware** now.
 
