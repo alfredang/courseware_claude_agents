@@ -25,11 +25,15 @@ courseware_claude/
 ├── generate_ap_fg_lg_lp/     # Courseware documents (4 agents)
 ├── generate_slides/          # Slides generation (5 agents)
 ├── generate_brochure/        # Brochure generation
+├── add_assessment_to_ap/     # Annex assessments to AP
+├── check_documents/          # Document verification
+├── courseware_agents/        # Shared agent utilities
 ├── settings/                 # API & model configuration
 ├── company/                  # Company management
 ├── skills/                   # NLP skill matching
-├── templates/                # Document templates (.docx)
-├── .skills/                  # Skill definitions for Claude
+├── utils/                    # Shared utilities
+├── docs/                     # Documentation
+├── .skills/                  # Skill definitions for Claude (13 skills)
 └── public/                   # Static assets (CSS)
 ```
 
@@ -79,19 +83,21 @@ Skills are defined in `.skills/<skill_name>/`:
 - `SKILL.md` - Command, keywords, response template
 - `README.md` - Developer documentation
 - `examples.md` - Example prompts
-- `scripts/` - Automation scripts
+- `reference/` - Technical reference docs for agents
 
 Skills use fuzzy matching via `rapidfuzz` to match user intents.
 
+**Execution**: All skills run using **Claude Code with subscription plan** (not pay-as-you-go API).
+
 ## Document Generation
 
-Generated documents use templates in `templates/`:
-- `AP_template.docx` - Assessment Plan
-- `FG_template.docx` - Facilitator Guide
-- `LG_template.docx` - Learner Guide
-- `LP_template.docx` - Lesson Plan
+Generated documents use templates stored in `generate_ap_fg_lg_lp/utils/`:
+- Assessment Plan (AP)
+- Facilitator Guide (FG)
+- Learner Guide (LG)
+- Lesson Plan (LP)
 
-Templates use `docxtpl` (Jinja2 syntax) for variable substitution.
+Templates use `docxtpl` (Jinja2 syntax) for variable substitution. Slide templates are in `.skills/generate_slides/templates/`.
 
 ## Coding Conventions
 
