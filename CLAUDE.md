@@ -33,7 +33,9 @@ courseware_claude/
 ├── skills/                   # NLP skill matching
 ├── utils/                    # Shared utilities
 ├── docs/                     # Documentation
-├── .skills/                  # Skill definitions for Claude (13 skills)
+├── .claude/                  # Claude Code configuration
+│   ├── settings.local.json   # Local settings
+│   └── skills/               # Skill definitions (13 skills)
 └── public/                   # Static assets (CSS)
 ```
 
@@ -79,7 +81,7 @@ CHAINLIT_AUTH_SECRET=...          # Required - Session encryption
 
 ## Skills System
 
-Skills are defined in `.skills/<skill_name>/`:
+Skills are defined in `.claude/skills/<skill_name>/`:
 - `SKILL.md` - Command, keywords, response template
 - `README.md` - Developer documentation
 - `examples.md` - Example prompts
@@ -97,7 +99,7 @@ Generated documents use templates stored in `generate_ap_fg_lg_lp/utils/`:
 - Learner Guide (LG)
 - Lesson Plan (LP)
 
-Templates use `docxtpl` (Jinja2 syntax) for variable substitution. Slide templates are in `.skills/generate_slides/templates/`.
+Templates use `docxtpl` (Jinja2 syntax) for variable substitution. Slide templates are in `.claude/skills/generate_slides/templates/`.
 
 ## Coding Conventions
 

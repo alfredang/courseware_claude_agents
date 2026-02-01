@@ -175,20 +175,22 @@ courseware_claude/
 ├── skills/                         # NLP skill matching
 │   └── __init__.py                 # Skill definitions
 │
-├── .skills/                        # Claude Code skills (13)
-│   ├── branding/                   # UI styling guidelines
-│   ├── generate_course_proposal/   # CP generation skill
-│   ├── generate_courseware/        # AP/FG/LG/LP skill
-│   ├── generate_assessment/        # Assessment generation
-│   ├── generate_assessment_plan/   # AP-specific skill
-│   ├── generate_facilitator_guide/ # FG-specific skill
-│   ├── generate_learner_guide/     # LG-specific skill
-│   ├── generate_lesson_plan/       # LP-specific skill
-│   ├── generate_slides/            # Slides generation
-│   ├── generate_brochure/          # Brochure generation
-│   ├── add_assessment_to_ap/       # Annex assessments
-│   ├── check_documents/            # Document verification
-│   └── create_github_readme/       # README generation
+├── .claude/                        # Claude Code configuration
+│   ├── settings.local.json         # Local settings
+│   └── skills/                     # Claude Code skills (13)
+│       ├── branding/               # UI styling guidelines
+│       ├── generate_course_proposal/   # CP generation skill
+│       ├── generate_courseware/    # AP/FG/LG/LP skill
+│       ├── generate_assessment/    # Assessment generation
+│       ├── generate_assessment_plan/   # AP-specific skill
+│       ├── generate_facilitator_guide/ # FG-specific skill
+│       ├── generate_learner_guide/ # LG-specific skill
+│       ├── generate_lesson_plan/   # LP-specific skill
+│       ├── generate_slides/        # Slides generation
+│       ├── generate_brochure/      # Brochure generation
+│       ├── add_assessment_to_ap/   # Annex assessments
+│       ├── check_documents/        # Document verification
+│       └── create_github_readme/   # README generation
 │
 ├── templates/                      # Document templates
 │   ├── AP_template.docx
@@ -270,7 +272,7 @@ docker run -p 7860:7860 --env-file .env wsq-courseware
 
 ## Skills System
 
-The platform includes 13 documented skills in the `.skills/` directory, each with:
+The platform includes 13 documented skills in the `.claude/skills/` directory, each with:
 
 | File | Purpose |
 |------|---------|
