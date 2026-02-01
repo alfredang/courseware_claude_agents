@@ -1,3 +1,13 @@
+---
+title: WSQ Courseware Generator
+emoji: 📚
+colorFrom: blue
+colorTo: indigo
+sdk: docker
+pinned: false
+app_port: 7860
+---
+
 <div align="center">
 
 # WSQ Courseware Generator
@@ -8,10 +18,11 @@
 [![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
 [![Docker](https://img.shields.io/badge/Docker-Ready-2496ED?style=for-the-badge&logo=docker&logoColor=white)](Dockerfile)
 [![Hugging Face](https://img.shields.io/badge/HuggingFace-Spaces-yellow?style=for-the-badge&logo=huggingface&logoColor=white)](https://huggingface.co/spaces)
+[![Claude Code](https://img.shields.io/badge/Claude_Code-Subscription-D4A574?style=for-the-badge&logo=anthropic&logoColor=white)](https://claude.ai/claude-code)
 
 **AI-Powered Courseware Generation Platform for WSQ Training Providers**
 
-[Live Demo](https://huggingface.co/spaces/alfredang/wsq-courseware-generator) · [Report Bug](https://github.com/alfredang/courseware_claude_agents/issues) · [Request Feature](https://github.com/alfredang/courseware_claude_agents/discussions)
+[Live Demo](https://huggingface.co/spaces/tertiaryinfotech/wsq-courseware-generator) · [Report Bug](https://github.com/alfredang/courseware_claude_agents/issues) · [Request Feature](https://github.com/alfredang/courseware_claude_agents/discussions)
 
 </div>
 
@@ -41,6 +52,11 @@ The **WSQ Courseware Generator** is an enterprise-grade AI platform that automat
 | Assessment Types | 9 |
 | Courseware Documents | 4 |
 | Prompt Templates | 22 |
+| Skills Documented | 13 |
+
+### Execution Environment
+
+This platform runs using **Claude Code with subscription plan**. All AI operations are executed through the Claude Code CLI environment with an active subscription, ensuring consistent and reliable performance.
 
 ---
 
@@ -159,6 +175,21 @@ courseware_claude/
 ├── skills/                         # NLP skill matching
 │   └── __init__.py                 # Skill definitions
 │
+├── .skills/                        # Claude Code skills (13)
+│   ├── branding/                   # UI styling guidelines
+│   ├── generate_course_proposal/   # CP generation skill
+│   ├── generate_courseware/        # AP/FG/LG/LP skill
+│   ├── generate_assessment/        # Assessment generation
+│   ├── generate_assessment_plan/   # AP-specific skill
+│   ├── generate_facilitator_guide/ # FG-specific skill
+│   ├── generate_learner_guide/     # LG-specific skill
+│   ├── generate_lesson_plan/       # LP-specific skill
+│   ├── generate_slides/            # Slides generation
+│   ├── generate_brochure/          # Brochure generation
+│   ├── add_assessment_to_ap/       # Annex assessments
+│   ├── check_documents/            # Document verification
+│   └── create_github_readme/       # README generation
+│
 ├── templates/                      # Document templates
 │   ├── AP_template.docx
 │   ├── FG_template.docx
@@ -234,7 +265,35 @@ docker run -p 7860:7860 --env-file .env wsq-courseware
 | `ANTHROPIC_API_KEY` | Yes | Anthropic Claude API key |
 | `DATABASE_URL` | Yes | PostgreSQL connection string |
 | `CHAINLIT_AUTH_SECRET` | Yes | Session encryption secret |
-| `GEMINI_API_KEY` | No | Google Gemini (for slides) |
+
+---
+
+## Skills System
+
+The platform includes 13 documented skills in the `.skills/` directory, each with:
+
+| File | Purpose |
+|------|---------|
+| `SKILL.md` | Command, keywords, description, response template |
+| `README.md` | Developer documentation |
+| `examples.md` | Example prompts and usage |
+| `reference/` | Technical reference docs for agents |
+
+### Available Skills
+
+| Skill | Description |
+|-------|-------------|
+| `generate_course_proposal` | Generate CP from TSC documents |
+| `generate_courseware` | Generate AP, FG, LG, LP documents |
+| `generate_assessment` | Create 9 assessment types |
+| `generate_slides` | Generate slides with NotebookLM MCP |
+| `generate_brochure` | Create marketing brochures |
+| `check_documents` | Verify supporting documents |
+| `add_assessment_to_ap` | Annex assessments to AP |
+| `branding` | UI styling guidelines |
+| `create_github_readme` | Generate README.md files |
+
+Skills use fuzzy matching via `rapidfuzz` to match user intents to appropriate workflows.
 
 ---
 
